@@ -1,59 +1,64 @@
+/* Centrado total de la página */
 body {
   margin: 0;
-  padding: 0;
   background: black;
-  font-family: sans-serif;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   overflow: hidden;
+  font-family: 'Press Start 2P', monospace;
 }
 
+/* Contenedor del juego con aspecto horizontal (16:9) */
 .game-wrapper {
-  width: 90vw;
-  max-width: 800px;
-  aspect-ratio: 3 / 2;
-  margin: auto;
+  width: 100vw;
+  max-width: 1000px;
+  aspect-ratio: 16 / 9;
+  background-color: #111;
+  position: relative;
+  border: 4px solid #555;
+  box-shadow: 0 0 20px #0ff;
 }
 
-canvas {
+/* Canvas ocupa todo el wrapper */
+#gameCanvas {
   width: 100%;
   height: 100%;
   display: block;
-  background-color: #222;
 }
 
+/* Botones de control táctil */
 .controls {
   position: absolute;
   bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  z-index: 10;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 10px;
 }
 
 .controls button {
-  width: 50px;
-  height: 50px;
-  font-size: 20px;
-  background: #555;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 2px 2px 5px #0008;
-  touch-action: manipulation;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #0ff;
+  border: 2px solid #0ff;
+  font-size: 1.2em;
+  padding: 10px 14px;
+  border-radius: 8px;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
-.controls div {
-  display: flex;
-  gap: 10px;
+.controls button:active {
+  background-color: rgba(0, 255, 255, 0.3);
 }
 
-/* Mostrar controles solo en pantallas pequeñas */
+/* Mostrar botones solo en pantallas pequeñas */
 @media (min-width: 768px) {
   .controls {
     display: none;
