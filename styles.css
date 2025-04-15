@@ -1,0 +1,40 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  font-family: sans-serif;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto;
+  background-color: #222;
+}
+
+.controls {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.controls button {
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  background: #555;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px #0008;
+  touch-action: manipulation;
+}
+
+.controls div {
+  display: flex;
+  gap: 10px;
+}

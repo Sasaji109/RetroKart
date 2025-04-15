@@ -4,102 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Retro Kart 80s</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background: black;
-    }
-    canvas {
-      display: block;
-      margin: 0 auto;
-      background-color: #222;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <canvas id="gameCanvas" width="480" height="320"></canvas>
 
-  <script>
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
+  <div class="controls">
+    <button id="up">⬆️</button>
+    <div>
+      <button id="left">⬅️</button>
+      <button id="down">⬇️</button>
+      <button id="right">➡️</button>
+    </div>
+  </div>
 
-    const car = {
-      x: 200,
-      y: 150,
-      width: 32,
-      height: 16,
-      color: "cyan",
-      speed: 2,
-      dx: 0,
-      dy: 0
-    };
-
-    function drawCar() {
-      ctx.fillStyle = car.color;
-      ctx.fillRect(car.x, car.y, car.width, car.height);
-    }
-
-    function clear() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-    }
-
-    function update() {
-      car.x += car.dx;
-      car.y += car.dy;
-
-      // Límites de pantalla
-      if (car.x < 0) car.x = 0;
-      if (car.y < 0) car.y = 0;
-      if (car.x + car.width > canvas.width) car.x = canvas.width - car.width;
-      if (car.y + car.height > canvas.height) car.y = canvas.height - car.height;
-    }
-
-    function loop() {
-      clear();
-      update();
-      drawCar();
-      requestAnimationFrame(loop);
-    }
-
-    function keyDown(e) {
-      if (e.key === "ArrowRight") car.dx = car.speed;
-      if (e.key === "ArrowLeft") car.dx = -car.speed;
-      if (e.key === "ArrowUp") car.dy = -car.speed;
-      if (e.key === "ArrowDown") car.dy = car.speed;
-    }
-
-    function keyUp(e) {
-      if (["ArrowRight", "ArrowLeft"].includes(e.key)) car.dx = 0;
-      if (["ArrowUp", "ArrowDown"].includes(e.key)) car.dy = 0;
-    }
-
-    // Controles táctiles básicos
-    let startX, startY;
-    canvas.addEventListener("touchstart", (e) => {
-      const touch = e.touches[0];
-      startX = touch.clientX;
-      startY = touch.clientY;
-    });
-
-    canvas.addEventListener("touchmove", (e) => {
-      const touch = e.touches[0];
-      const dx = touch.clientX - startX;
-      const dy = touch.clientY - startY;
-
-      car.dx = dx > 10 ? car.speed : dx < -10 ? -car.speed : 0;
-      car.dy = dy > 10 ? car.speed : dy < -10 ? -car.speed : 0;
-    });
-
-    canvas.addEventListener("touchend", () => {
-      car.dx = 0;
-      car.dy = 0;
-    });
-
-    document.addEventListener("keydown", keyDown);
-    document.addEventListener("keyup", keyUp);
-
-    loop();
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
