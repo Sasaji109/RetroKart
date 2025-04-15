@@ -25,7 +25,6 @@ function update() {
   car.x += car.dx;
   car.y += car.dy;
 
-  // Límites de pantalla
   if (car.x < 0) car.x = 0;
   if (car.y < 0) car.y = 0;
   if (car.x + car.width > canvas.width) car.x = canvas.width - car.width;
@@ -54,7 +53,6 @@ function keyUp(e) {
 document.addEventListener("keydown", keyDown);
 document.addEventListener("keyup", keyUp);
 
-// Controles táctiles con botones
 const btnUp = document.getElementById("up");
 const btnDown = document.getElementById("down");
 const btnLeft = document.getElementById("left");
