@@ -7,7 +7,6 @@ body {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  font-family: 'Press Start 2P', monospace;
 }
 
 /* Contenedor del juego con aspecto horizontal (16:9) */
